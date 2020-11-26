@@ -1,6 +1,6 @@
 import { ListContainer } from "./styles";
 
-const List = ({ list }) => {
+const List = ({ list, addToFavoriteList }) => {
   return (
     <>
       {list.map((itemList, index) => {
@@ -14,7 +14,10 @@ const List = ({ list }) => {
         }
 
         return (
-          <ListContainer onClick={(e) => console.log(e.target)} key={index}>
+          <ListContainer
+            onClick={() => addToFavoriteList(itemList, urlImg)}
+            key={index}
+          >
             <div>
               <img src={urlImg} alt="" />
             </div>

@@ -1,4 +1,5 @@
 import { Switch, Route } from "react-router-dom";
+import { useEffect } from "react";
 
 import Home from "./pages/Home";
 import RickMorty from "./pages/Rick-morty";
@@ -7,6 +8,12 @@ import Pokemon from "./pages/Pokemon";
 import { GlobalStyle } from "./style";
 
 const App = () => {
+  useEffect(() => {
+    if (!window.localStorage.getItem("collection")) {
+      window.localStorage.setItem("collection", []);
+    }
+  }, []);
+
   return (
     <>
       <GlobalStyle />

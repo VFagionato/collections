@@ -4,6 +4,7 @@ import Header from "../../components/Header";
 import List from "../../components/List";
 
 const RickMorty = () => {
+  const [favList, setFavList] = useState([]);
   const [characters, setCharacters] = useState([]);
   const [nextPage, setNextPage] = useState(
     "https://rickandmortyapi.com/api/character/?page=1"
@@ -36,6 +37,31 @@ const RickMorty = () => {
     setPage(page - 1);
   };
 
+  const addToFav = (item, image) => {
+    const objFav = {
+      name: item.name,
+      ImageUrl: image,
+      type: 1,
+    };
+
+    if (favList === null) {
+      setFavList([objFav]);
+    } else {
+      const itemAlredyAdded = favList.find(
+        (element) => element.name === objFav.name
+      );
+      console.log(itemAlredyAdded);
+      if (!itemAlredyAdded) {
+        setFavList([...favList, objFav]);
+      }
+    }
+  };
+  console.log(favList);
+
+  useEffect(() => {
+    window.localStorage.setItem("collection", JSON.stringify(favList));
+  }, [favList]);
+
   useEffect(() => {
     getCharactersList(nextPage);
   }, []);
@@ -48,7 +74,7 @@ const RickMorty = () => {
         <span>{page}</span>
         <button onClick={goToNextPage}>NextPage</button>
       </div>
-      <List list={characters} />
+      <List list={characters} addToFavoriteList={addToFav} />
     </>
   );
 };
