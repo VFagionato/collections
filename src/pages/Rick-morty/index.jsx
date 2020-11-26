@@ -56,10 +56,9 @@ const RickMorty = () => {
       }
     }
   };
-  console.log(favList);
 
   useEffect(() => {
-    window.localStorage.setItem("collection", JSON.stringify(favList));
+    window.localStorage.setItem("RMcollection", JSON.stringify(favList));
   }, [favList]);
 
   useEffect(() => {
