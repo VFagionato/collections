@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { Switch, Route } from "react-router-dom";
 
-function App() {
+import Home from "./pages/Home";
+import RickMorty from "./pages/Rick-morty";
+
+import { GlobalStyle } from "./style";
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <GlobalStyle />
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route exact path="/rick-morty">
+          <RickMorty />
+        </Route>
+        <Route exact path="/pokemon"></Route>
+        <Route exact path="/favorites"></Route>
+        <Route exact path="/chart"></Route>
+      </Switch>
+    </>
   );
-}
+};
 
 export default App;
