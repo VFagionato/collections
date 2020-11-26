@@ -7,7 +7,7 @@ const List = ({ list }) => {
         let urlImg = null;
         if (!itemList.id) {
           const brokenUrl = itemList.url.split("/");
-          const id = brokenUrl[brokenUrl.length - 1];
+          const id = brokenUrl[brokenUrl.length - 2];
           urlImg = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
         } else {
           urlImg = itemList.image;

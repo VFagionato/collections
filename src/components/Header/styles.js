@@ -10,7 +10,7 @@ export const HeaderDiv = styled.div`
     props.pathname === "/rick-morty"
       ? "purple"
       : props.pathname === "/pokemon"
-      ? "yellow"
+      ? "orange"
       : "blue"};
 
   a {
