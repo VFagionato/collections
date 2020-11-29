@@ -1,15 +1,41 @@
-import { Link, useLocation } from "react-router-dom";
-
-import { HeaderDiv } from "./styles";
+import { useState } from "react";
+import { useHistory } from "react-router-dom";
+import ListRoundedIcon from "@material-ui/icons/ListRounded";
+import BottomNavegation from "@material-ui/core/BottomNavigation";
+import BottomnavegationAction from "@material-ui/core/BottomNavigationAction";
+import FavoriteIcon from "@material-ui/icons/Favorite";
 
 const Header = () => {
-  const location = useLocation();
+  const rickAndMorty = "rick-and-morty";
+  const pokemon = "pokemon";
+  const [value, setValue] = useState("rickAndMorty");
+  const history = useHistory();
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
   return (
-    <HeaderDiv pathname={location.pathname}>
-      <Link to="/rick-morty">Rick And Morty List</Link>
-      <Link to="/pokemon">Pokemon's List</Link>
-      <Link to="/favorites">Favorites</Link>
-    </HeaderDiv>
+    <BottomNavegation showLabels value={value} onChange={handleChange}>
+      <BottomnavegationAction
+        label="Rick and Morty's List"
+        value="rickAndMorty"
+        icon={<ListRoundedIcon />}
+        onClick={() => history.push(`/list/${rickAndMorty}`)}
+      />
+      <BottomnavegationAction
+        label="Pokemon's List"
+        value="pokemon"
+        icon={<ListRoundedIcon />}
+        onClick={() => history.push(`/list/${pokemon}`)}
+      />
+      <BottomnavegationAction
+        label="Favorite"
+        value="Favorite"
+        icon={<FavoriteIcon />}
+        onClick={() => history.push(`/list/favorite`)}
+      />
+    </BottomNavegation>
   );
 };
 
