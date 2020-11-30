@@ -33,7 +33,7 @@ const Header = ({ typeOfList }) => {
         label="Favorite"
         value="Favorite"
         icon={<FavoriteIcon />}
-        onClick={() => history.push(`/list/favorite`)}
+        onClick={() => history.push(`/bookmarks`)}
       />
     </BottomNavegation>
   );

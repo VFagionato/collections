@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { useEffect } from "react";
 import { MainContainer, StyledLink } from "./styles";
 import { motion } from "framer-motion";
 
@@ -11,6 +11,12 @@ const BounceTranstion = {
 };
 
 const Home = () => {
+  useEffect(() => {
+    if (!window.localStorage.getItem("collections")) {
+      window.localStorage.setItem("collections", []);
+    }
+  }, []);
+
   return (
     <MainContainer>
       <motion.div

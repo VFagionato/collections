@@ -29,7 +29,7 @@ const List = () => {
 
   const getPokemonsList = async () => {
     const response = await Axios.get(
-      "https://pokeapi.co/api/v2/pokemon?limit=150"
+      "https://pokeapi.co/api/v2/pokemon?limit=151"
     ).catch((error) => console.log(error));
 
     setPokemonList([...response.data.results]);
@@ -47,13 +47,14 @@ const List = () => {
     typeOfList === "rick-and-morty"
       ? setCharacterList([...RickAndMortyList])
       : setCharacterList([...PokemonList]);
-    console.log(characterList);
   }, [typeOfList, RickAndMortyList, PokemonList]);
 
   return (
     <MainPage>
       <Header typeOfList={typeOfList} />
-      {characterList.length !== 0 && <CardList list={characterList} />}
+      {characterList.length > 0 && (
+        <CardList list={characterList} typeOfList={typeOfList} />
+      )}
     </MainPage>
   );
 };
