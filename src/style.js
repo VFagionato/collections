@@ -5,6 +5,6 @@ export const GlobalStyle = createGlobalStyle`
         box-sizing:border-box;
     }
     body {
-        max-width: 100vw
+        max-width: 99vw;
     }
 `;

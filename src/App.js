@@ -1,10 +1,8 @@
 import { Switch, Route } from "react-router-dom";
-import { useEffect } from "react";
 
 import Home from "./pages/Home";
-import RickMorty from "./pages/Rick-morty";
-import Pokemon from "./pages/Pokemon";
-import Favorite from "./pages/Favorite";
+import List from "./pages/List";
+import Bookmarks from "./pages/Bookmarks";
 
 import { GlobalStyle } from "./style";
 
@@ -16,16 +14,12 @@ const App = () => {
         <Route exact path="/">
           <Home />
         </Route>
-        <Route exact path="/rick-morty">
-          <RickMorty />
+        <Route exact path="/list/:typeOfList">
+          <List />
         </Route>
-        <Route exact path="/pokemon">
-          <Pokemon />
+        <Route exact path="/bookmarks">
+          <Bookmarks />
         </Route>
-        <Route exact path="/favorites">
-          <Favorite />
-        </Route>
-        <Route exact path="/chart"></Route>
       </Switch>
     </>
   );

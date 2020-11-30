@@ -1,30 +1,31 @@
-import {
-  MainContainer,
-  CardList,
-  CardsContainer,
-  ImageContainer,
-} from "./styled";
+import { useEffect } from "react";
+import { MainContainer, StyledLink } from "./styles";
 import { motion } from "framer-motion";
-import { Link, useHistory } from "react-router-dom";
+
+const BounceTranstion = {
+  y: {
+    duration: 0.4,
+    yoyo: Infinity,
+    ease: "easeOut",
+  },
+};
 
 const Home = () => {
-  const history = useHistory();
+  useEffect(() => {
+    if (!window.localStorage.getItem("collections")) {
+      window.localStorage.setItem("collections", []);
+    }
+  }, []);
 
   return (
     <MainContainer>
-      <motion.h1 animate={{ y: 0 }} transition={{ duration: 1 }}>
-        Colections
-      </motion.h1>
-      <CardsContainer>
-        <CardList>
-          <h2>Rick And Morty List</h2>
-          <ImageContainer onClick={() => history.push("/rick-morty")} />
-        </CardList>
-        <CardList>
-          <h2>Pokemon's List</h2>
-          <ImageContainer pokemon onClick={() => history.push("/pokemon")} />
-        </CardList>
-      </CardsContainer>
+      <motion.div
+        transition={BounceTranstion}
+        animate={{ y: ["100%", "-100%"] }}
+        whileHover={{ y: { yoyo: "stopAnimation" } }}
+      >
+        <StyledLink to="/list/rick-and-morty">Collections</StyledLink>
+      </motion.div>
     </MainContainer>
   );
 };
